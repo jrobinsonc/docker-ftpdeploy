@@ -1,8 +1,8 @@
 # Docker FTP Deploy
 
-Docker image to do deployments using FTP.
+This docker image aims to help with continuous deployment when only FTP can be used.
 
-This is useful when you can't implement a better solution like Capistrano or another alternative. Those solutions require SSH-enabled servers or at least root access to install third-party software to handle the deployment but, what if you only have FTP access? There is where this image becomes handy.
+Imagine you want to implement a continuous deployment process in a pipeline for your project but your hosting provider only gives you FTP access, with this image you can set up that in a very easy way.
 
 <https://hub.docker.com/r/jrobinsonc/ftpdeploy/>
 
