@@ -2,41 +2,31 @@
 
 This docker image aims to help with continuous deployment when only FTP can be used.
 
-Imagine you want to implement a continuous deployment process in a pipeline for your project but your hosting provider only gives you FTP access, with this image you can set up that in a very easy way.
-
 <https://hub.docker.com/r/jrobinsonc/ftpdeploy/>
 
 ## Usage
 
-### Basic usage
+```shell
+image: jrobinsonc/ftpdeploy
 
-1. Start the container:
+pipelines:
+  default:
+    - step:
+        name: Deploy
+        #trigger: manual
+        deployment: production
+        script: 
+        - git ftp push -v --syncroot 'dist' --remote-root '$FTP_PATH' -u '$FTP_USER' -p '$FTP_PASS' '$FTP_HOST'
+```
 
-    ```shell
-    docker run -it -v $(pwd):/root/repo jrobinsonc/ftpdeploy bash
-    ```
-1. To do deployments:
-
-    The first time you must use `git ftp init`:
+⚠️ Remember that the first time you must use `git ftp init` to upload all the files or `git ftp catchup` if the server has already the files:
     
-    ```shell
-    git ftp init --syncroot /root/repo --remote-root / -u "ftp-user" -p "ftp-pass" "ftp://hostname:21"
-    ```
-    
-    After that you have to change to `git ftp push`:
-    
-    ```shell
-    git ftp push --syncroot /root/repo --remote-root / -u "ftp-user" -p "ftp-pass" "ftp://hostname:21"
-    ```
+```shell
+git ftp init  --syncroot 'dist' --remote-root '$FTP_PATH' -u '$FTP_USER' -p '$FTP_PASS' '$FTP_HOST'
+```
 
 For more details about *GIT-FTP*, visit:  
 <https://github.com/git-ftp/git-ftp>
-
-### Integrate into a pipeline
-
-You can use this image in a pipeline to automatically deploy your project.
-
-Doc soon.
 
 ## License
 
