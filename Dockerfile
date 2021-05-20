@@ -18,8 +18,8 @@ RUN cd /root/build \
   && make install
 RUN cd /root/build \
   && wget https://curl.haxx.se/download/curl-7.76.1.tar.gz \
-  && tar -zxvf curl-7.66.0.tar.gz \
-  && cd curl-7.66.0 \
+  && tar -zxvf curl-7.76.1.tar.gz \
+  && cd curl-7.76.1 \
   && ./configure --with-libssh2=/usr/local \
   && make \
   && make install
