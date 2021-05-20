@@ -4,6 +4,7 @@ LABEL maintainer "hi@joserobinson.com"
 
 # Install required stuff give live to the image.
 RUN apk update --no-cache \
+  && apk upgrade --no-cache \
   && apk add --no-cache gcc g++ make libffi-dev openssl-dev bash git
 
 # Build cURL with SFTP support.
@@ -16,7 +17,7 @@ RUN cd /root/build \
   && make \
   && make install
 RUN cd /root/build \
-  && wget https://curl.haxx.se/download/curl-7.66.0.tar.gz \
+  && wget https://curl.haxx.se/download/curl-7.76.1.tar.gz \
   && tar -zxvf curl-7.66.0.tar.gz \
   && cd curl-7.66.0 \
   && ./configure --with-libssh2=/usr/local \
