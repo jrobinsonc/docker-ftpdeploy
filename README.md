@@ -16,7 +16,7 @@ pipelines:
         #trigger: manual
         deployment: production
         script: 
-        - git ftp push -v --syncroot 'dist' --remote-root '$FTP_PATH' -u '$FTP_USER' -p '$FTP_PASS' '$FTP_HOST'
+          - git ftp push -v --syncroot 'dist' --remote-root '$FTP_PATH' -u '$FTP_USER' -p '$FTP_PASS' '$FTP_HOST'
 ```
 
 ⚠️ Remember that the first time you must use `git ftp init` to upload all the files or `git ftp catchup` if the server has already the files:
