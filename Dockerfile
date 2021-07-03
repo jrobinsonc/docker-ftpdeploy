@@ -10,9 +10,9 @@ RUN apk update --no-cache \
 # Build cURL with SFTP support.
 RUN mkdir /root/build \
   && cd /root/build \
-  && wget https://curl.haxx.se/download/curl-7.76.1.tar.gz \
-  && tar -zxvf curl-7.76.1.tar.gz \
-  && cd curl-7.76.1 \
+  && wget https://curl.haxx.se/download/curl-7.77.0.tar.gz \
+  && tar -zxvf curl-7.77.0.tar.gz \
+  && cd curl-7.77.0 \
   && ./configure --with-libssh2=/usr/local \
   && make \
   && make install \
