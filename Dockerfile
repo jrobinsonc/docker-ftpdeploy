@@ -8,12 +8,13 @@ RUN apk update --no-cache \
   && apk add --no-cache g++ make libffi-dev bash git libssh2-dev
 
 # Build cURL with SFTP support.
-RUN mkdir /root/build \
+RUN set -e \
+  && mkdir /root/build \
   && cd /root/build \
   && wget https://curl.haxx.se/download/curl-7.77.0.tar.gz \
   && tar -zxvf curl-7.77.0.tar.gz \
   && cd curl-7.77.0 \
-  && ./configure --with-libssh2=/usr/local \
+  && ./configure --with-libssh2=/usr/local --with-openssl \
   && make \
   && make install \
   && rm -rf /root/build
