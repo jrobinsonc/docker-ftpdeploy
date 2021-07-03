@@ -1,8 +1,13 @@
 # Docker FTP Deploy
 
-This docker image aims to help with continuous deployment when only FTP can be used.
-
+Docker image to help with continuous deployment when only FTP can be used.  
 <https://hub.docker.com/r/jrobinsonc/ftpdeploy/>
+
+**How does it work, and why is it different from other FTP Docker images?**  
+Very simple: this image will only upload changed files instead of uploading the whole directory, as other Docker images do.
+
+It uses [Git FTP](https://github.com/git-ftp/git-ftp) behind the scenes, which basically does this:  
+> It keeps track of the uploaded files by storing the commit id in a log file on the server. It uses Git to determine which local files have changed.
 
 ## Usage
 
