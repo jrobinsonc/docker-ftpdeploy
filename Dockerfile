@@ -5,7 +5,7 @@ LABEL maintainer "jrobinsonc@gmail.com"
 # Install required stuff give live to the image.
 RUN apk update --no-cache \
   && apk upgrade --no-cache \
-  && apk add --no-cache gcc g++ make libffi-dev openssl-dev git
+  && apk add --no-cache gcc g++ make libffi-dev openssl-dev bash git
 
 # Build cURL with SFTP support.
 RUN mkdir /root/build
@@ -31,3 +31,5 @@ RUN git clone https://github.com/git-ftp/git-ftp.git /opt/git-ftp \
   && tag="$(git tag | grep '^[0-9]*\.[0-9]*\.[0-9]*$' | tail -1)" \
   && git checkout "$tag" \
   && make install
+
+CMD ["bash"]
