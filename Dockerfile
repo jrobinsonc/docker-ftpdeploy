@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL maintainer "hi@joserobinson.com"
+LABEL maintainer "jrobinsonc@gmail.com"
 
 # Install required stuff give live to the image.
 RUN apk update --no-cache \
