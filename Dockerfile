@@ -14,7 +14,7 @@ RUN set -e \
   && wget https://curl.haxx.se/download/curl-7.77.0.tar.gz \
   && tar -zxvf curl-7.77.0.tar.gz \
   && cd curl-7.77.0 \
-  && ./configure --with-libssh2=/usr/local --with-openssl \
+  && ./configure --with-libssh2=/usr/local --with-openssl --disable-dependency-tracking \
   && make \
   && make install \
   && rm -rf /root/build
